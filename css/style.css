@@ -1,0 +1,307 @@
+/* @extend display-flex; */
+display-flex, .wizard, .actions, .actions ul, div.actions ul li a .zmdi {
+  /*display: flex;
+  display: -webkit-flex; */}
+
+/* @extend list-type-ulli; */
+list-type-ulli, div.actions ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+input, select, textarea {
+  outline: none;
+  appearance: unset !important;
+  -moz-appearance: unset !important;
+  -webkit-appearance: unset !important;
+  -o-appearance: unset !important;
+  -ms-appearance: unset !important; }
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  -o-appearance: none !important;
+  -ms-appearance: none !important;
+  margin: 0; }
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -o-box-shadow: none !important;
+  -ms-box-shadow: none !important; }
+
+input[type=checkbox] {
+  appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  -webkit-appearance: checkbox !important;
+  -o-appearance: checkbox !important;
+  -ms-appearance: checkbox !important; }
+
+input[type=radio] {
+  appearance: radio !important;
+  -moz-appearance: radio !important;
+  -webkit-appearance: radio !important;
+  -o-appearance: radio !important;
+  -ms-appearance: radio !important; }
+
+.clear {
+  clear: both; }
+
+.main {  
+  z-index: 99;
+  overflow-y: auto;
+  height: 100%; }
+
+.container {
+  max-width: 765px;
+  margin: 0 auto;
+  padding: 30px 0px;
+  background: inherit;
+  border-top: dotted 2px #5F7A43;
+
+  font-family: 'VT323', monospace;
+  font-weight: normal;
+  font-size: 20px;
+  color: #B0E37D;
+  line-height: 1.5;
+ }
+
+.finished {
+  background: #0184d2; }
+  .finished .container {
+    display: none; }
+  .finished h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    font-weight: bold; }
+
+.cotolabs-form {
+  position: relative; }
+  .cotolabs-form .steps {
+    display: none; }
+
+.disabled {
+  display: none; }
+
+label {
+  font-size: 14px;
+  display: none;
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+  color: #2D3B20; }
+
+input {
+  background: none;
+  color: #2D3B20;
+  margin-right: 45px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid #5F7A43;
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -webkit-appearance: none; }
+  input:focus + .form-label {
+    top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #999; }
+  input:invalid + .form-label {
+    display: block; }
+
+select {
+  background: none;
+  border: none;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  min-width: 150px;
+  padding-right: 30px;
+
+background-image: 
+    linear-gradient(45deg, transparent 50%, #5f7a43 50%),
+    linear-gradient(135deg, #5f7a43 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 8px) 7px,
+    calc(100% - 0px) 7px,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    8px 8px,
+    8px 8px,
+    0px 1.5em;
+  background-repeat: no-repeat;
+}
+
+select:focus {
+  background-image:
+    linear-gradient(45deg, #5f7a43 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, #5f7a43 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 0px) 7px,
+    calc(100% - 8px) 7px,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    8px 8px,
+    8px 8px,
+    0px 1.5em;
+  background-repeat: no-repeat;
+  outline: 0;
+}    
+
+.form-label {
+  position: absolute;
+  transition: 0.25s ease;
+  -moz-transition: 0.25s ease;
+  -webkit-transition: 0.25s ease;
+  -o-transition: 0.25s ease;
+  -ms-transition: 0.25s ease;
+  left: 0;
+  top: 25px; }
+
+span.error {
+    width: 100%;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: #ea8573;
+    margin-left: 10px;
+}
+  /*label.error:after {
+    font-family: 'Material-Design-Iconic-Font';
+    position: absolute;
+    content: '\f1f4';
+    right: 0px;
+    top: 30px;
+    font-size: 18px;
+    color: #e10000; }*/
+
+.form-label-error {
+  color: #e10000; }
+
+input.error {
+  border-bottom: 3px solid #bf321e; }
+
+input.error + .form-label {
+  top: 4px;
+  font-size: 12px;
+  font-weight: 500; }
+
+input.valid + .form-label {
+  display: none; }
+
+input::placeholder {
+  color: #5F7A43;
+}  
+
+fieldset {
+  padding: 10px 25px;
+  border-radius: 5px;
+  float: left;
+  background: #B0E37D;
+  border: none;
+  margin: 0px;
+  position: relative; }
+
+.wizard {
+  justify-content: space-between;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  /*padding: 0 10px 0 55px;*/ }
+
+.content {
+  }
+
+div.actions {
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center;
+  line-height: initial;
+   }
+
+div.actions a {
+  font-family: 'Press Start 2P', cursive;
+  color: #f0d226;
+  margin-left: 15px;
+}
+
+.field-icon {
+  font-size: 18px;
+  position: relative;
+  z-index: 2;
+  float: right;
+  margin-top: -29px; 
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(100% - 40px);
+    max-width: 100%; 
+  }
+
+  label {
+    
+  }
+
+  .wizard {
+    
+  }
+}
+
+@media screen and (max-width: 456px) {
+  fieldset {
+    padding: 10px 20px;
+  }
+
+  fieldset input {
+    max-width: 210px;
+    font-size: 20px;
+  }
+}
+
+
+/********** TOOLTIPS ***********/
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted #f0d226;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 110px;
+  background-color: #222;
+  color: #eee;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  border-radius: 6px;
+  line-height: 25px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*# sourceMappingURL=style.css.map */
