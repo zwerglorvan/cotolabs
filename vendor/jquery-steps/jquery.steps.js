@@ -1,7 +1,7 @@
 /*! 
  * jQuery Steps v1.1.0 - 09/04/2014
- * Copyright (c) 2014 Rafael Staib (http://www.jquery-steps.com)
- * Licensed under MIT http://www.opensource.org/licenses/MIT
+ * Copyright (c) 2014 Rafael Staib (http:// www.jquery-steps.com)
+ * Licensed under MIT http:// www.opensource.org/licenses/MIT
  */
 ;(function ($, undefined)
 {
@@ -150,7 +150,7 @@ function analyzeData(wizard, options, state)
     var stepTitles = wizard.children(options.headerTag),
         stepContents = wizard.children(options.bodyTag);
 
-    // Validate content
+    //  Validate content
     if (stepTitles.length > stepContents.length)
     {
         throwError(_missingCorrespondingElementErrorMessage, "contents");
@@ -164,11 +164,11 @@ function analyzeData(wizard, options, state)
 
     state.stepCount = stepTitles.length;
 
-    // Tries to load the saved state (step position)
+    //  Tries to load the saved state (step position)
     if (options.saveState && $.cookie)
     {
         var savedState = $.cookie(_cookiePrefix + getUniqueId(wizard));
-        // Sets the saved position to the start index if not undefined or out of range 
+        //  Sets the saved position to the start index if not undefined or out of range 
         var savedIndex = parseInt(savedState, 0);
         if (!isNaN(savedIndex) && savedIndex < state.stepCount)
         {
@@ -180,7 +180,7 @@ function analyzeData(wizard, options, state)
 
     stepTitles.each(function (index)
     {
-        var item = $(this), // item == header
+        var item = $(this), //  item == header
             content = stepContents.eq(index),
             modeData = content.data("mode"),
             mode = (modeData == null) ? contentMode.html : getValidEnumValue(contentMode,
@@ -230,25 +230,25 @@ function destroy(wizard, options)
 {
     var eventNamespace = getEventNamespace(wizard);
 
-    // Remove virtual data objects from the wizard
+    //  Remove virtual data objects from the wizard
     wizard.unbind(eventNamespace).removeData("uid").removeData("options")
         .removeData("state").removeData("steps").removeData("eventNamespace")
         .find(".actions a").unbind(eventNamespace);
 
-    // Remove attributes and CSS classes from the wizard
+    //  Remove attributes and CSS classes from the wizard
     wizard.removeClass(options.clearFixCssClass + " vertical");
 
     var contents = wizard.find(".content > *");
 
-    // Remove virtual data objects from panels and their titles
+    //  Remove virtual data objects from panels and their titles
     contents.removeData("loaded").removeData("mode").removeData("url");
 
-    // Remove attributes, CSS classes and reset inline styles on all panels and their titles
+    //  Remove attributes, CSS classes and reset inline styles on all panels and their titles
     contents.removeAttr("id").removeAttr("role").removeAttr("tabindex")
         .removeAttr("class").removeAttr("style")._removeAria("labelledby")
         ._removeAria("hidden");
 
-    // Empty panels if the mode is set to 'async' or 'iframe'
+    //  Empty panels if the mode is set to 'async' or 'iframe'
     wizard.find(".content > [data-mode='async'],.content > [data-mode='iframe']").empty();
 
     var wizardSubstitute = $("<{0} class=\"{1}\"></{0}>".format(wizard.get(0).tagName, wizard.attr("class")));
@@ -412,7 +412,7 @@ function getValidEnumValue(enumType, keyOrValue)
     validateArgument("enumType", enumType);
     validateArgument("keyOrValue", keyOrValue);
 
-    // Is key
+    //  Is key
     if (typeof keyOrValue === "string")
     {
         var value = enumType[keyOrValue];
@@ -423,7 +423,7 @@ function getValidEnumValue(enumType, keyOrValue)
 
         return value;
     }
-    // Is value
+    //  Is value
     else if (typeof keyOrValue === "number")
     {
         for (var key in enumType)
@@ -436,7 +436,7 @@ function getValidEnumValue(enumType, keyOrValue)
 
         throwError("Invalid enum value '{0}'.", keyOrValue);
     }
-    // Type is not supported
+    //  Type is not supported
     else
     {
         throwError("Invalid key or value type.");
@@ -502,11 +502,11 @@ function goToStep(wizard, options, state, index)
     var oldIndex = state.currentIndex;
     if (wizard.triggerHandler("stepChanging", [state.currentIndex, index]))
     {
-        // Save new state
+        //  Save new state
         state.currentIndex = index;
         saveCurrentStateToCookie(wizard, options, state);
 
-        // Change visualisation
+        //  Change visualisation
         refreshStepNavigation(wizard, options, state, oldIndex);
         refreshPagination(wizard, options, state);
         loadAsyncContent(wizard, options, state);
@@ -545,11 +545,11 @@ function goToStepMod(wizard, options, state, index)
     var oldIndex = state.currentIndex;
     if (wizard.triggerHandler("stepChanging", [state.currentIndex, index]))
     {
-        // Save new state
+        //  Save new state
         state.currentIndex = index;
-        //saveCurrentStateToCookie(wizard, options, state);
+        // saveCurrentStateToCookie(wizard, options, state);
 
-        // Change visualisation
+        //  Change visualisation
         refreshStepNavigation(wizard, options, state, oldIndex);
         refreshPagination(wizard, options, state);
         loadAsyncContent(wizard, options, state);
@@ -594,7 +594,7 @@ function initialize(options)
             transitionElement: null
         };
 
-        // Create data container
+        //  Create data container
         wizard.data("options", opts);
         wizard.data("state", state);
         wizard.data("steps", []);
@@ -603,7 +603,7 @@ function initialize(options)
         render(wizard, opts, state);
         registerEvents(wizard, opts);
 
-        // Trigger focus
+        //  Trigger focus
         if (opts.autoFocus && _uniqueId === 0)
         {
             getStepAnchor(wizard, opts.startIndex).focus();
@@ -627,9 +627,9 @@ function initialize(options)
  * @example
  *     $("#wizard").steps().insert(0, {
  *         title: "Title",
- *         content: "", // optional
- *         contentMode: "async", // optional
- *         contentUrl: "/Content/Step/1" // optional
+ *         content: "", //  optional
+ *         contentMode: "async", //  optional
+ *         contentUrl: "/Content/Step/1" //  optional
  *     });
  * @chainable
  **/
@@ -640,9 +640,9 @@ function insertStep(wizard, options, state, index, step)
         throwError(_indexOutOfRangeErrorMessage);
     }
 
-    // TODO: Validate step object
+    //  TODO: Validate step object
 
-    // Change data
+    //  Change data
     step = $.extend({}, stepModel, step);
     insertStepToCache(wizard, index, step);
     if (state.currentIndex !== state.stepCount && state.currentIndex >= index)
@@ -794,14 +794,14 @@ function paginationClick(wizard, options, state, index)
             parent = anchor.parent(),
             isDisabled = parent.hasClass("disabled");
 
-        // Enable the step to make the anchor clickable!
+        //  Enable the step to make the anchor clickable!
         parent._enableAria();
         anchor.click();
 
-        // An error occured
+        //  An error occured
         if (oldIndex === state.currentIndex && isDisabled)
         {
-            // Disable the step again if current index has not changed; prevents click action.
+            //  Disable the step again if current index has not changed; prevents click action.
             parent._enableAria(false);
             return false;
         }
@@ -981,13 +981,13 @@ function registerEvents(wizard, options)
  **/
 function removeStep(wizard, options, state, index)
 {
-    // Index out of range and try deleting current item will return false.
+    //  Index out of range and try deleting current item will return false.
     if (index < 0 || index >= state.stepCount || state.currentIndex === index)
     {
         return false;
     }
 
-    // Change data
+    //  Change data
     removeStepFromCache(wizard, index);
     if (state.currentIndex > index)
     {
@@ -1000,13 +1000,13 @@ function removeStep(wizard, options, state, index)
     getStepPanel(wizard, index).remove();
     getStepAnchor(wizard, index).parent().remove();
 
-    // Set the "first" class to the new first step button 
+    //  Set the "first" class to the new first step button 
     if (index === 0)
     {
         wizard.find(".steps li").first().addClass("first");
     }
 
-    // Set the "last" class to the new last step button 
+    //  Set the "last" class to the new last step button 
     if (index === state.stepCount)
     {
         wizard.find(".steps li").eq(index).addClass("last");
@@ -1035,7 +1035,7 @@ function removeStepFromCache(wizard, index)
  **/
 function render(wizard, options, state)
 {
-    // Create a content wrapper and copy HTML from the intial wizard structure
+    //  Create a content wrapper and copy HTML from the intial wizard structure
     var wrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
         verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
@@ -1044,11 +1044,11 @@ function render(wizard, options, state)
         stepTitles = contentWrapper.children(options.headerTag),
         stepContents = contentWrapper.children(options.bodyTag);
 
-    // Transform the wizard wrapper and remove the inner HTML
+    //  Transform the wizard wrapper and remove the inner HTML
     wizard.attr("role", "application").empty().append(stepsWrapper).append(contentWrapper)
         .addClass(options.cssClass + " " + options.clearFixCssClass + verticalCssClass);
 
-    // Add WIA-ARIA support
+    //  Add WIA-ARIA support
     stepContents.each(function (index)
     {
         renderBody(wizard, state, $(this), index);
@@ -1200,19 +1200,19 @@ function renderTitle(wizard, options, state, header, index)
         stepCollection.find("li").eq(index - 1).after(stepItem);
     }
 
-    // Set the "first" class to the new first step button
+    //  Set the "first" class to the new first step button
     if (index === 0)
     {
         stepCollection.find("li").removeClass("first").eq(index).addClass("first");
     }
 
-    // Set the "last" class to the new last step button
+    //  Set the "last" class to the new last step button
     if (index === (state.stepCount - 1))
     {
         stepCollection.find("li").removeClass("last").eq(index).addClass("last");
     }
 
-    // Register click event
+    //  Register click event
     stepItem.children("a").bind("click" + getEventNamespace(wizard), stepClickHandler);
 }
 
@@ -1310,7 +1310,7 @@ function stepClickHandler(event)
         goToStep(wizard, options, state, position);
     }
 
-    // If nothing has changed
+    //  If nothing has changed
     if (oldIndex === state.currentIndex)
     {
         getStepAnchor(wizard, oldIndex).focus();
@@ -1448,9 +1448,9 @@ $.fn.steps.getStep = function (index)
  * @example
  *     $("#wizard").steps().insert(0, {
  *         title: "Title",
- *         content: "", // optional
- *         contentMode: "async", // optional
- *         contentUrl: "/Content/Step/1" // optional
+ *         content: "", //  optional
+ *         contentMode: "async", //  optional
+ *         contentUrl: "/Content/Step/1" //  optional
  *     });
  * @chainable
  **/
@@ -1662,10 +1662,10 @@ var stepModel = $.fn.steps.stepModel = {
  * @class defaults
  * @for steps
  * @example
- *   // Global approach
+ *   //  Global approach
  *   $.steps.defaults.headerTag = "h3";
  * @example
- *   // Initialization approach
+ *   //  Initialization approach
  *   $("#wizard").steps({ headerTag: "h3" });
  **/
 var defaults = $.fn.steps.defaults = {
